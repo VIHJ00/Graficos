@@ -4,13 +4,13 @@ import { Obj3D } from './Obj3D.js';
 //import { CvWireframe } from './CvWireFrame.js';
 import { CvHLines } from './CvHLines.js';
 import { Rota3D } from './Rota3D.js';
-var canvas;
-var graphics;
+let canvas;
+let graphics;
 canvas = document.getElementById('circlechart');
 graphics = canvas.getContext('2d');
-var cv;
-var obj;
-var ang = 0;
+let cv;
+let obj;
+let ang = 0;
 function leerArchivo(e) {
     var archivo = e.target.files[0];
     if (!archivo) {
@@ -38,8 +38,8 @@ function mostrarContenido(contenido) {
 }
 function vp(dTheta, dPhi, fRho) {
     if (obj != undefined) {
-        var obj_1 = cv.getObj();
-        if (!obj_1.vp(cv, dTheta, dPhi, fRho))
+        let obj = cv.getObj();
+        if (!obj.vp(cv, dTheta, dPhi, fRho))
             alert('datos no validos');
     }
     else
@@ -64,48 +64,46 @@ function decrDistFunc() {
     vp(0, 0, 0.5);
 }
 function pza1DerFunc() {
-    var af = 10;
-    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 180);
-    for (var i = 201; i <= 238; i++) {
+    let af = 60;
+    Rota3D.initRotate(obj.w[1], obj.w[49], af * Math.PI / 180);
+    for (let i = 1; i <= 48; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
 }
 function pza1IzqFunc() {
-    var af = -10;
-    Rota3D.initRotate(obj.w[139], obj.w[140], af * Math.PI / 180);
-    for (var i = 201; i <= 238; i++) {
+    let af = -30;
+    Rota3D.initRotate(obj.w[1], obj.w[49], af * Math.PI / 180);
+    for (let i = 1; i <= 48; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
 }
 function pza12DerFunc() {
-    var af = 10;
-    console.log(obj.w[29], obj.w[30], obj.w[6]);
-    Rota3D.initRotate(obj.w[29], obj.w[30], af * Math.PI / 180);
-    for (var i = 101; i <= 140; i++) {
+    let af = 30;
+    console.log(obj.w[1], obj.w[24], obj.w[6]);
+    Rota3D.initRotate(obj.w[24], obj.w[84], af * Math.PI / 180);
+    for (let i = 49; i <= 84; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
-    for (var i = 201; i <= 238; i++) {
+    for (let i = 49; i <= 84; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
 }
 function pza12IzqFunc() {
-    var af = -10;
-    console.log(obj.w[29], obj.w[30]);
-    Rota3D.initRotate(obj.w[29], obj.w[30], af * Math.PI / 180);
-    for (var i = 101; i <= 140; i++) {
+    let af = -30;
+    console.log(obj.w[1], obj.w[25]);
+    Rota3D.initRotate(obj.w[1], obj.w[24], af * Math.PI / 180);
+    for (let i = 49; i <= 84; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
-    for (var i = 201; i <= 238; i++) {
+    for (let i = 49; i <= 84; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
-    cv.setObj(obj);
-    cv.paint();
 }
 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
 document.getElementById('eyeDown').addEventListener('click', eyeDownFunc, false);
@@ -119,10 +117,10 @@ document.getElementById('pza1Izq').addEventListener('click', pza1IzqFunc, false)
 document.getElementById('pza1Der').addEventListener('click', pza1DerFunc, false);
 document.getElementById('pza12Izq').addEventListener('click', pza12IzqFunc, false);
 document.getElementById('pza12Der').addEventListener('click', pza12DerFunc, false);
-var Pix, Piy;
-var Pfx, Pfy;
-var theta = 0.3, phi = 1.3, SensibilidadX = 0.02, SensibilidadY = 0.02;
-var flag = false;
+let Pix, Piy;
+let Pfx, Pfy;
+let theta = 0.3, phi = 1.3, SensibilidadX = 0.02, SensibilidadY = 0.02;
+let flag = false;
 function handleMouse(evento) {
     Pix = evento.offsetX;
     Piy = evento.offsetY;
@@ -133,8 +131,8 @@ function makeVizualization(evento) {
         Pfx = evento.offsetX;
         Pfy = evento.offsetY;
         //console.log(Pfx, Pfy)
-        var difX = Pix - Pfx;
-        var difY = Pfy - Piy;
+        let difX = Pix - Pfx;
+        let difY = Pfy - Piy;
         vp(0, 0.1 * difY / 50, 1);
         Piy = Pfy;
         vp(0.1 * difX, 0 / 50, 1);

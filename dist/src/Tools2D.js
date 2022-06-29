@@ -1,14 +1,12 @@
-var Tools2D = /** @class */ (function () {
-    function Tools2D() {
-    }
-    Tools2D.area2 = function (a, b, c) {
+export class Tools2D {
+    static area2(a, b, c) {
         return (a.x - c.x) * (b.y - c.y) - (a.y - c.y) * (b.x - c.x);
-    };
-    Tools2D.insideTriangle = function (a, b, c, p) {
+    }
+    static insideTriangle(a, b, c, p) {
         return (Tools2D.area2(a, b, p) >= 0 &&
             Tools2D.area2(b, c, p) >= 0 &&
             Tools2D.area2(c, a, p) >= 0);
-    };
+    }
     /*static triangulate(p: Point2D[], tr: Triangle[] ): void {
         // p contains all n polygon vertices in CCW order.
         // The resulting triangles will be stored in array tr.
@@ -54,10 +52,8 @@ var Tools2D = /** @class */ (function () {
            }
         }
      }*/
-    Tools2D.distance2 = function (p, q) {
-        var dx = p.x - q.x, dy = p.y - q.y;
+    static distance2(p, q) {
+        let dx = p.x - q.x, dy = p.y - q.y;
         return dx * dx + dy * dy;
-    };
-    return Tools2D;
-}());
-export { Tools2D };
+    }
+}

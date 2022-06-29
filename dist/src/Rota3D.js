@@ -1,7 +1,5 @@
-import { Point3D } from './Point3D.js';
-var Rota3D = /** @class */ (function () {
-    function Rota3D() {
-    }
+import { Point3D } from './point3D.js';
+export class Rota3D {
     /* The method initRotate computes the general rotation matrix
     
                 | r11 r12 r13 0 |
@@ -15,12 +13,12 @@ var Rota3D = /** @class */ (function () {
        The rotation takes place about the directed axis
        AB and through the angle alpha.
     */
-    Rota3D.initRotate = function (a, b, alpha) {
-        var v1 = b.x - a.x, v2 = b.y - a.y, v3 = b.z - a.z, theta = Math.atan2(v2, v1), phi = Math.atan2(Math.sqrt(v1 * v1 + v2 * v2), v3);
+    static initRotate(a, b, alpha) {
+        let v1 = b.x - a.x, v2 = b.y - a.y, v3 = b.z - a.z, theta = Math.atan2(v2, v1), phi = Math.atan2(Math.sqrt(v1 * v1 + v2 * v2), v3);
         this.initRotate2(a, theta, phi, alpha);
-    };
-    Rota3D.initRotate2 = function (a, theta, phi, alpha) {
-        var cosAlpha, sinAlpha, cosPhi, sinPhi, cosTheta, sinTheta, cosPhi2, sinPhi2, cosTheta2, sinTheta2, pi, c, a1 = a.x, a2 = a.y, a3 = a.z;
+    }
+    static initRotate2(a, theta, phi, alpha) {
+        let cosAlpha, sinAlpha, cosPhi, sinPhi, cosTheta, sinTheta, cosPhi2, sinPhi2, cosTheta2, sinTheta2, pi, c, a1 = a.x, a2 = a.y, a3 = a.z;
         cosPhi = Math.cos(phi);
         sinPhi = Math.sin(phi);
         cosPhi2 = cosPhi * cosPhi;
@@ -46,10 +44,8 @@ var Rota3D = /** @class */ (function () {
         this.r41 = a1 - a1 * this.r11 - a2 * this.r21 - a3 * this.r31;
         this.r42 = a2 - a1 * this.r12 - a2 * this.r22 - a3 * this.r32;
         this.r43 = a3 - a1 * this.r13 - a2 * this.r23 - a3 * this.r33;
-    };
-    Rota3D.rotate = function (p) {
+    }
+    static rotate(p) {
         return new Point3D(p.x * this.r11 + p.y * this.r21 + p.z * this.r31 + this.r41, p.x * this.r12 + p.y * this.r22 + p.z * this.r32 + this.r42, p.x * this.r13 + p.y * this.r23 + p.z * this.r33 + this.r43);
-    };
-    return Rota3D;
-}());
-export { Rota3D };
+    }
+}

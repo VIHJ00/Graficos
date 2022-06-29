@@ -5,3 +5,12 @@
   #footer a{
     color: #FFFFFF;
   }
+  .cajasTexto{
+    display: block;
+  }
+
+  button{
+    background-color: #0dcaf0;
+    font-size: 17px;
+    border: none;
+  }

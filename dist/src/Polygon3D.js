@@ -2,46 +2,46 @@
 //                 referring to coordinates stored in an Obj3D object.
 import { Tria } from './Tria.js';
 import { Tools2D } from './Tools2D.js';
-var Polygon3D = /** @class */ (function () {
+export class Polygon3D {
     ///CHECAR QUE ARGUEMNTO SE ESTA  PASANDS
-    function Polygon3D(vnrs) {
-        var n = vnrs.length;
+    constructor(vnrs) {
+        let n = vnrs.length;
         this.nrs = new Array(n);
-        for (var i = 0; i < n; i++)
+        for (let i = 0; i < n; i++)
             this.nrs[i] = vnrs[i];
     }
     ;
-    Polygon3D.prototype.getNrs = function () { return this.nrs; };
-    Polygon3D.prototype.getA = function () { return this.a; };
-    Polygon3D.prototype.getB = function () { return this.b; };
-    Polygon3D.prototype.getC = function () { return this.c; };
-    Polygon3D.prototype.getH = function () { return this.h; };
-    Polygon3D.prototype.setAbch = function (a, b, c, h) {
+    getNrs() { return this.nrs; }
+    getA() { return this.a; }
+    getB() { return this.b; }
+    getC() { return this.c; }
+    getH() { return this.h; }
+    setAbch(a, b, c, h) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.h = h;
-    };
-    Polygon3D.prototype.getT = function () { return this.t; };
-    Polygon3D.prototype.triangulate = function (obj) {
+    }
+    getT() { return this.t; }
+    triangulate(obj) {
         // Successive vertex numbers (CCW) in vector nrs.
         // Resulting triangles will be put in array t.
-        var n = this.nrs.length; // n > 2 is required
-        var next = new Array(n);
+        let n = this.nrs.length; // n > 2 is required
+        let next = new Array(n);
         //checar inicializacion del arreglo  USO DE NEW ARRAY O NO
         this.t = new Array(n - 2);
-        var vScr = obj.getVScr();
-        var iA = 0, iB, iC;
-        var j = n - 1;
-        for (var i = 0; i < n; i++) {
+        let vScr = obj.getVScr();
+        let iA = 0, iB, iC;
+        let j = n - 1;
+        for (let i = 0; i < n; i++) {
             next[j] = i;
             j = i;
         }
-        for (var k = 0; k < n - 2; k++) { // Find a suitable triangle, consisting of two edges
+        for (let k = 0; k < n - 2; k++) { // Find a suitable triangle, consisting of two edges
             // and an internal diagonal:
-            var a = void 0, b = void 0, c = void 0;
-            var found = false;
-            var count = 0, nA = -1, nB = 0, nC = 0, nj = void 0;
+            let a, b, c;
+            let found = false;
+            let count = 0, nA = -1, nB = 0, nC = 0, nj;
             while (!found && ++count < n) {
                 iB = next[iA];
                 iC = next[iB];
@@ -81,7 +81,5 @@ var Polygon3D = /** @class */ (function () {
                 }
             }
         }
-    };
-    return Polygon3D;
-}());
-export { Polygon3D };
+    }
+}

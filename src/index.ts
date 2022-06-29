@@ -5,7 +5,7 @@ import { Obj3D } from './Obj3D.js';
 //import { CvWireframe } from './CvWireFrame.js';
 import { CvHLines } from './CvHLines.js';
 import { Rota3D } from './Rota3D.js';
-import { Point3D } from './Point3D.js';
+import { Point3D } from './point3D.js';
 
 let canvas: HTMLCanvasElement;
 let graphics: CanvasRenderingContext2D;
@@ -80,9 +80,9 @@ function decrDistFunc() {
 
 function pza1DerFunc() {
   let af = 60;
- 	
+
 	Rota3D.initRotate( obj.w[1], obj.w[49], af*Math.PI/180);	
-	
+
   for (let i = 1; i <= 48; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
@@ -92,9 +92,9 @@ function pza1DerFunc() {
 
 function pza1IzqFunc() {
   let af = -30;
- 	
+
 	Rota3D.initRotate( obj.w[1], obj.w[49], af*Math.PI/180);	
-	
+
   for (let i =1; i <= 48; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
@@ -105,7 +105,7 @@ function pza12DerFunc() {
   let af = 30;
   console.log(obj.w[1], obj.w[24], obj.w[6]);
   Rota3D.initRotate(obj.w[24], obj.w[84], af * Math.PI / 180);
-	
+
   for (let i = 49; i <= 84; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
   }
@@ -120,16 +120,13 @@ function pza12IzqFunc() {
   let af = -30;
   console.log(obj.w[1], obj.w[25]);
 	Rota3D.initRotate( obj.w[1], obj.w[24], af*Math.PI/180);	
-	
+
   for (let i = 49; i <= 84; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
   for (let i = 49; i <= 84; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
-  
-	cv.setObj(obj);
-  cv.paint();	
 }
 
 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
