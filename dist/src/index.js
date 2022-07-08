@@ -63,47 +63,190 @@ function incrDistFunc() {
 function decrDistFunc() {
     vp(0, 0, 0.5);
 }
-function pza1DerFunc() {
-    let af = 60;
-    Rota3D.initRotate(obj.w[1], obj.w[49], af * Math.PI / 180);
-    for (let i = 1; i <= 48; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+let angulo1 = 0;
+function moverCabeza() {
+    let af = 6;
+    angulo1 += af;
+    if (angulo1 < 36 && angulo1 < 42) {
+        Rota3D.initRotate(obj.w[49], obj.w[106], af * Math.PI / 180);
+        for (let i = 57; i <= 106; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
     }
+    else
+        alert("limite de articulación alcanzado ");
     cv.setObj(obj);
     cv.paint();
 }
-function pza1IzqFunc() {
-    let af = -30;
-    Rota3D.initRotate(obj.w[1], obj.w[49], af * Math.PI / 180);
-    for (let i = 1; i <= 48; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+function moverCabezaD() {
+    let af = -6;
+    angulo1 -= af;
+    if (angulo1 <= 42 && angulo1 <= 36) {
+        Rota3D.initRotate(obj.w[49], obj.w[106], af * Math.PI / 180);
+        for (let i = 57; i <= 106; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        angulo1--;
     }
+    else
+        alert("limite de la cabeza alcanzado");
+}
+let angulo = 0;
+function movercola() {
+    let af = -8;
+    angulo -= af;
+    if (angulo <= 72 && angulo <= 64) {
+        Rota3D.initRotate(obj.w[41], obj.w[42], af * Math.PI / 180);
+        for (let i = 41; i <= 48; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        angulo--;
+    }
+    else
+        alert("limite para mover la cola alcanzado");
+}
+function movercolaB() {
+    let af = 8;
+    angulo += af;
+    if (angulo < 64 && angulo < 72) {
+        Rota3D.initRotate(obj.w[41], obj.w[42], af * Math.PI / 180);
+        for (let i = 41; i <= 48; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+    }
+    else
+        alert("la cola no puede moverse mas ");
     cv.setObj(obj);
     cv.paint();
 }
+let angulodr = 0;
 function pza12DerFunc() {
-    let af = 30;
-    console.log(obj.w[1], obj.w[24], obj.w[6]);
-    Rota3D.initRotate(obj.w[24], obj.w[84], af * Math.PI / 180);
-    for (let i = 49; i <= 84; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    let af = -8;
+    angulodr -= af;
+    if (angulodr <= 32 && angulodr > -21) {
+        Rota3D.initRotate(obj.w[23], obj.w[24], af * Math.PI / 180);
+        for (let i = 17; i <= 24; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        angulodr--;
     }
-    for (let i = 49; i <= 84; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    else
+        alert("limite de pata delantera alcanzado");
+}
+let pdd = 0;
+function pza12IzqFunc() {
+    let af = 8;
+    pdd += af;
+    if (pdd < 32) {
+        Rota3D.initRotate(obj.w[31], obj.w[32], af * Math.PI / 180);
+        for (let i = 25; i <= 32; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
     }
+    else
+        alert("limite de articulacion de la pata alcanzado");
     cv.setObj(obj);
     cv.paint();
 }
-function pza12IzqFunc() {
-    let af = -30;
-    console.log(obj.w[1], obj.w[25]);
-    Rota3D.initRotate(obj.w[1], obj.w[24], af * Math.PI / 180);
-    for (let i = 49; i <= 84; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+let pdD = 0;
+function closP2() {
+    let af = 8;
+    pdD += af;
+    if (pdd < 32 && pdd < -18) {
+        Rota3D.initRotate(obj.w[23], obj.w[24], af * Math.PI / 180);
+        for (let i = 17; i <= 24; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
     }
-    for (let i = 49; i <= 84; i++) {
-        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    else
+        alert("limite alcanzado pata delantera");
+    cv.setObj(obj);
+    cv.paint();
+}
+let angulo2 = 0;
+function closP() {
+    let af = -8;
+    angulo2 -= af;
+    if (angulo2 <= 32 && angulo2 > -21) {
+        Rota3D.initRotate(obj.w[31], obj.w[32], af * Math.PI / 180);
+        for (let i = 25; i <= 32; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        angulo2--;
     }
+    else
+        alert("limite de pata delantera alcanzado");
+}
+let TD = 0;
+function pTD() {
+    let af = -8;
+    TD -= af;
+    if (angulo <= 32 && angulo > -15) {
+        Rota3D.initRotate(obj.w[7], obj.w[8], af * Math.PI / 180);
+        for (let i = 1; i <= 8; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        TD--;
+    }
+    else
+        alert("limite de pata tracera Derecha alcanzado");
+}
+let pdDTI = 0;
+function pTI() {
+    let af = 8;
+    pdDTI += af;
+    if (pdDTI < 32 && pdDTI < 21) {
+        Rota3D.initRotate(obj.w[15], obj.w[16], af * Math.PI / 180);
+        for (let i = 9; i <= 16; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+    }
+    else
+        alert("limite de pata tracera Derecha alcanzado");
+    cv.setObj(obj);
+    cv.paint();
+    pdDTI++;
+}
+let pPTD = 0;
+function closPTD() {
+    let af = 8;
+    pPTD -= af;
+    if (pPTD < 36 && pPTD > -18) {
+        Rota3D.initRotate(obj.w[7], obj.w[8], af * Math.PI / 180);
+        for (let i = 1; i <= 8; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        pPTD--;
+    }
+    else
+        alert("limite de pata tracera Derecha alcanzado");
+}
+function closPTI() {
+    let af = -8;
+    angulo -= af;
+    if (angulo <= 32 && angulo > -21) {
+        Rota3D.initRotate(obj.w[15], obj.w[16], af * Math.PI / 180);
+        for (let i = 9; i <= 16; i++) {
+            obj.w[i] = Rota3D.rotate(obj.w[i]);
+        }
+        cv.setObj(obj);
+        cv.paint();
+        angulo--;
+    }
+    else
+        alert("limite de pata tracera alcanzado");
 }
 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
 document.getElementById('eyeDown').addEventListener('click', eyeDownFunc, false);
@@ -113,10 +256,18 @@ document.getElementById('eyeRight').addEventListener('click', eyeRightFunc, fals
 document.getElementById('incrDist').addEventListener('click', incrDistFunc, false);
 document.getElementById('decrDist').addEventListener('click', decrDistFunc, false);
 //movimiento de piezas
-document.getElementById('pza1Izq').addEventListener('click', pza1IzqFunc, false);
-document.getElementById('pza1Der').addEventListener('click', pza1DerFunc, false);
+document.getElementById('movercola').addEventListener('click', movercola, false);
+document.getElementById('movercolaB').addEventListener('click', movercolaB, false);
+document.getElementById('moverCabeza').addEventListener('click', moverCabeza, false);
+document.getElementById('moverCabezaD').addEventListener('click', moverCabezaD, false);
 document.getElementById('pza12Izq').addEventListener('click', pza12IzqFunc, false);
 document.getElementById('pza12Der').addEventListener('click', pza12DerFunc, false);
+document.getElementById('closP2').addEventListener('click', closP2, false);
+document.getElementById('closP').addEventListener('click', closP, false);
+document.getElementById('pTD').addEventListener('click', pTD, false);
+document.getElementById('pTI').addEventListener('click', pTI, false);
+document.getElementById('closPTD').addEventListener('click', closPTD, false);
+document.getElementById('closPTI').addEventListener('click', closPTI, false);
 let Pix, Piy;
 let Pfx, Pfy;
 let theta = 0.3, phi = 1.3, SensibilidadX = 0.02, SensibilidadY = 0.02;
